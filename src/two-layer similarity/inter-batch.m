@@ -7,14 +7,14 @@ close all;
 
 addpath('./tool');
 str2 = '.mat';
-save_dir = 'C:\\Users\\admin\\Desktop\\postgraduate\\matlab toolbox\\simtb-master\\simulated_data\\high order\\';
+save_dir = 'high order\\';
 for i=0:3
     str1 = num2str(i);
     data_dir = strcat(str1,str2);
     load(data_dir);
     alldata{1}=data;
     DATA={alldata{1}};
-    nclass = 3; %类别数，不清楚的话nclass=1
+    nclass = 4; %Number of classes, set to 1 if unsure
     if i==2
         nclass=4;
     end
@@ -25,4 +25,5 @@ for i=0:3
     [S,w] = MVMLV(ksk,opts);% Calculate the fusion similarity matrix
     save_dirs = strcat(save_dir,data_dir);
     save(save_dirs, "S");
+
 end
